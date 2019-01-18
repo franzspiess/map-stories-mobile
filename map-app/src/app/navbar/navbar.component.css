@@ -1,0 +1,19 @@
+div {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: #673AB7;
+  position: relative;
+  z-index: 1100;
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  }
+
+  .title {
+  color: white;
+  font-family: Roboto, sans-serif;
+  letter-spacing: 0px;
+  font-size: 24px;
+  font-weight: 400;
+  }
