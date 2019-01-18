@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ContainerComponent } from './container/container.component';
 import { StoryComponent } from './story/story.component';
 import { EventComponent } from './event/event.component';
+import { ListContainerComponent } from './list-container/list-container.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { EventComponent } from './event/event.component';
     NavbarComponent,
     ContainerComponent,
     StoryComponent,
-    EventComponent
+    EventComponent,
+    ListContainerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
