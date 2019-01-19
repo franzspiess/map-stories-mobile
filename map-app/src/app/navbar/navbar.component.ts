@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { getViewData } from '@angular/core/src/render3/state';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 declare var window: any;
 declare var FB: any;
 
@@ -13,11 +14,13 @@ export class NavbarComponent implements OnInit{
   private user: string;
   private token: string;
   private pictureUrl: string;
+  loggedIn = false;
 
 
   constructor() {
-    this.pictureUrl = "";
+
   }
+
 
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
@@ -46,7 +49,6 @@ export class NavbarComponent implements OnInit{
 
   submitLogin(){
     console.log("submit login to facebook");
-
     FB.login((response)=>
         {
           console.log('submitLogin',response);
@@ -60,21 +62,21 @@ export class NavbarComponent implements OnInit{
            }
            else
            {
-           console.log('User login failed');
-         }
+            console.log('User login failed');
+          }
       })
   }
 
-  getData () {
-    console.log('getdata');
+  getData  () {
     FB.api(
       this.user,
       {fields: 'picture, name'},
-      function (response) {
+      (response) => {
         if (response && !response.error) {
-          console.log('login data', response.picture.data.url);
           this.pictureUrl = response.picture.data.url;
-          console.log(this.pictureUrl);
+          this.loggedIn = true;
+          console.log("from getdata", this);
+
         }
       }
     )

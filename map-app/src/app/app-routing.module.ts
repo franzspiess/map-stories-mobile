@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListContainerComponent }  from './list-container/list-container.component';
+import {EventComponent} from './event/event.component';
 
 const routes: Routes = [
-  {path: 'list', component: ListContainerComponent}
+  {path: 'list', component: ListContainerComponent},
+  {path:'event', component: EventComponent }
 ];
 
 @NgModule({
@@ -17,5 +19,4 @@ export class AppRoutingModule {
 
  }
 
- 
- 
+

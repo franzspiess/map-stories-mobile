@@ -1,6 +1,12 @@
 <div>
   <div class='titleBoard'>
     <a routerLink="/list" class='title'>Map Stories</a>
-    <button type="button" class="btn" (click)="submitLogin();">Login with facebook</button>
+    <p>{{ loggedIn }}</p>
+    <div *ngIf="loggedIn; else loggedOut">
+      <img class="userPic" src="{{pictureUrl}}">
+    </div>
+    <ng-template #loggedOut>
+      <button type="button" class="btn" (click)="submitLogin();">Login with facebook</button>
+    </ng-template>
   </div>
 </div>
