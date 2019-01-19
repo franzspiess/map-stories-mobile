@@ -8,6 +8,8 @@ import {Event} from '../Models'
 })
 export class EventComponent implements OnInit {
 
+  contructor() { }
+
   newEvent = new Event ();
 
   title = 'app';
@@ -25,7 +27,6 @@ export class EventComponent implements OnInit {
   }
 
 
-  contructor() { }
 
   ngOnInit() {
     console.log(this.newEvent);
