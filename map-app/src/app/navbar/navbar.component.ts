@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { getViewData } from '@angular/core/src/render3/state';
 declare var window: any;
 declare var FB: any;
 
@@ -7,12 +8,16 @@ declare var FB: any;
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+
+export class NavbarComponent implements OnInit{
   private user: string;
   private token: string;
+  private pictureUrl: string;
 
 
-  constructor() { }
+  constructor() {
+    this.pictureUrl = "";
+  }
 
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
@@ -34,30 +39,45 @@ export class NavbarComponent implements OnInit {
      }(document, 'script', 'facebook-jssdk'));
   }
 
+  // ngDoCheck () {
+  //   this.getData();
+  // }
+
+
   submitLogin(){
     console.log("submit login to facebook");
-    // FB.login();
+
     FB.login((response)=>
         {
           console.log('submitLogin',response);
           if (response.authResponse)
           {
             // console.log('success')
+            console.log(this.user);
             this.user = response.authResponse.userID;
             this.token = response.authResponse.accessToken;
-
-            console.log(this.token)
-            return response;
-            //login success
-            //login success code here
-            //redirect to home page
+            this.getData();
            }
            else
            {
            console.log('User login failed');
          }
       })
-
   }
 
+  getData () {
+    console.log('getdata');
+    FB.api(
+      this.user,
+      {fields: 'picture, name'},
+      function (response) {
+        if (response && !response.error) {
+          console.log('login data', response.picture.data.url);
+          this.pictureUrl = response.picture.data.url;
+          console.log(this.pictureUrl);
+        }
+      }
+    )
+  }
 }
+
