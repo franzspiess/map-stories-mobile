@@ -18,4 +18,6 @@ export class EventComponent implements OnInit {
 
   }
 
+  get diagnostic() { return JSON.stringify(this.newEvent); }
+
 }
