@@ -12,9 +12,7 @@ export class NavbarComponent implements OnInit {
 
  private pictureUrl: string;
 
-  constructor() { 
-    this.pictureUrl = "";
-  }
+  constructor() { }
 
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
@@ -38,17 +36,17 @@ export class NavbarComponent implements OnInit {
 
   submitLogin(){
     console.log("submit login to facebook");
-    
     FB.login((response)=>
         {
           console.log('submitLogin',response);
           if (response.authResponse)
           {
-            console.log('success')
+            console.log('success');
+
             FB.api(
               '2632719756768141',
               {fields: 'picture,name'},
-              function (response1) {
+              (response1) => {
                 if (response1 && !response1.error) {
                   console.log('login data', response1.picture.data.url);
                   this.pictureUrl = response1.picture.data.url;
@@ -62,9 +60,6 @@ export class NavbarComponent implements OnInit {
            console.log('User login failed');
          }
       });
-
-
-
   }
 }
 
