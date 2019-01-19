@@ -2,21 +2,24 @@ import { Component, OnInit } from '@angular/core';
 declare var window: any;
 declare var FB: any;
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
 
+ private pictureUrl: string;
 
-  constructor() { }
+  constructor() { 
+    this.pictureUrl = "";
+  }
 
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
       FB.init({
-        appId      : '2543129815913697',
+        appId      : '314734805839026',
         cookie     : true,
         xfbml      : true,
         version    : 'v3.1'
@@ -35,16 +38,24 @@ export class NavbarComponent implements OnInit {
 
   submitLogin(){
     console.log("submit login to facebook");
-    // FB.login();
+    
     FB.login((response)=>
         {
           console.log('submitLogin',response);
           if (response.authResponse)
           {
             console.log('success')
-            //login success
-            //login success code here
-            //redirect to home page
+            FB.api(
+              '2632719756768141',
+              {fields: 'picture,name'},
+              function (response1) {
+                if (response1 && !response1.error) {
+                  console.log('login data', response1.picture.data.url);
+                  this.pictureUrl = response1.picture.data.url;
+                  console.log(this.pictureUrl);
+                }
+              }
+            )
            }
            else
            {
@@ -52,6 +63,8 @@ export class NavbarComponent implements OnInit {
          }
       });
 
-  }
 
+
+  }
 }
+
