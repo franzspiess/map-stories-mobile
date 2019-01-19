@@ -3,15 +3,19 @@ import { HttpClient } from '@angular/common/http'; // import htmlClient
 import { Observable } from 'rxjs';
 import { Story } from './Models';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  private url = 'http://localhost:4000/'
+
   constructor(private http: HttpClient) { }
 
-  getTopic(): Observable<Story[]> {
-    return this.http.get<Story[]>(`http://localhost/4000`);
+  getStory(): Observable<Story[]> {
+    return this.http.get<Story[]>(this.url + 'stories' );
   }
 
 

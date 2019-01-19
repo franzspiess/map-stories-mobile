@@ -8,6 +8,7 @@ import { ContainerComponent } from './container/container.component';
 import { StoryComponent } from './story/story.component';
 import { EventComponent } from './event/event.component';
 import { ListContainerComponent } from './list-container/list-container.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ListContainerComponent } from './list-container/list-container.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <div>
-  <ul *ngFor="let el of story">
-  <app-story [storyTitle]="el.title"></app-story>
+  <ul *ngFor="let story of stories">
+  <app-story [story]="story"></app-story>
   </ul>
 </div>

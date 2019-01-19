@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Story} from '../Models';
 
 @Component({
   selector: 'app-story',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StoryComponent implements OnInit {
 
-  @Input() storyTitle: string;
+  @Input() story: Story;
 
   constructor() { }
 

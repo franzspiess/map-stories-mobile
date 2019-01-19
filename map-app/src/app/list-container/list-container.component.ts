@@ -9,13 +9,15 @@ import { Story } from '../Models';
 })
 export class ListContainerComponent implements OnInit {
 
-  private topic: Story[];
+  private stories: Story[];
 
   constructor(private apiService: DataService) { }
 
-  getStory() {
-    this.apiService.getTopic().subscribe((data, any) => {
-      this.story = data;
+  getStory (): void{
+    this.apiService.getStory()
+    .subscribe((data) => {
+      console.log('Server Response',data);
+      this.stories = data;
     })
   }
 
