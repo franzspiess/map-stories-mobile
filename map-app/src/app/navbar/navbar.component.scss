@@ -6,8 +6,7 @@
   position: relative;
   z-index: 1100;
   width: 100%;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 20px;
   }
 
   .title {
@@ -16,4 +15,8 @@
   letter-spacing: 0px;
   font-size: 24px;
   font-weight: 400;
+  }
+
+  a {
+    width: 80%;
   }
