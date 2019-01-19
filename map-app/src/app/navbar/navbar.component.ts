@@ -11,6 +11,7 @@ declare var FB: any;
 export class NavbarComponent implements OnInit {
 
  private pictureUrl: string;
+ loggedIn = false;
 
   constructor() { }
 
