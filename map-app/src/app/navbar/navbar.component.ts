@@ -8,6 +8,8 @@ declare var FB: any;
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  private user: string;
+  private token: string;
 
 
   constructor() { }
@@ -40,7 +42,12 @@ export class NavbarComponent implements OnInit {
           console.log('submitLogin',response);
           if (response.authResponse)
           {
-            console.log('success')
+            // console.log('success')
+            this.user = response.authResponse.userID;
+            this.token = response.authResponse.accessToken;
+
+            console.log(this.token)
+            return response;
             //login success
             //login success code here
             //redirect to home page
@@ -49,7 +56,7 @@ export class NavbarComponent implements OnInit {
            {
            console.log('User login failed');
          }
-      });
+      })
 
   }
 
