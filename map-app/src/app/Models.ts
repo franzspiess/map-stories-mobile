@@ -30,10 +30,12 @@ export class Attachment {
 }
 
 export class Event {
-  title: string;
-  startTime: string;
-  dateAndTime: Date;
-  mapLocation: string;
-  location: Location;
-  attachments: Attachment;
+  // constructor(
+  title: string,
+  startTime: string,
+  dateAndTime: Date,
+  mapLocation: string,
+  location: Location,
+  attachments: Attachment
+  // ) {}
 }
