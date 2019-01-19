@@ -1,3 +1,5 @@
-<p>
-  <app-story></app-story>
-</p>
+<div>
+  <ul *ngFor="let el of story">
+  <app-story [storyTitle]="el.title"></app-story>
+  </ul>
+</div>
