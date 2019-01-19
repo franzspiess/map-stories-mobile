@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { getViewData } from '@angular/core/src/render3/state';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 declare var window: any;
 declare var FB: any;
 
@@ -8,17 +10,22 @@ declare var FB: any;
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit{
+  private user: string;
+  private token: string;
+  private pictureUrl: string;
+  loggedIn = false;
 
- private pictureUrl: string;
- loggedIn = false;
 
-  constructor() { }
+  constructor() {
+
+  }
+
 
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
       FB.init({
-        appId      : '314734805839026',
+        appId      : '2543129815913697',
         cookie     : true,
         xfbml      : true,
         version    : 'v3.1'
@@ -35,6 +42,11 @@ export class NavbarComponent implements OnInit {
      }(document, 'script', 'facebook-jssdk'));
   }
 
+  // ngDoCheck () {
+  //   this.getData();
+  // }
+
+
   submitLogin(){
     console.log("submit login to facebook");
     FB.login((response)=>
@@ -42,25 +54,32 @@ export class NavbarComponent implements OnInit {
           console.log('submitLogin',response);
           if (response.authResponse)
           {
-            console.log('success');
-
-            FB.api(
-              '2632719756768141',
-              {fields: 'picture,name'},
-              (response1) => {
-                if (response1 && !response1.error) {
-                  console.log('login data', response1.picture.data.url);
-                  this.pictureUrl = response1.picture.data.url;
-                  console.log(this.pictureUrl);
-                }
-              }
-            )
+            // console.log('success')
+            console.log(this.user);
+            this.user = response.authResponse.userID;
+            this.token = response.authResponse.accessToken;
+            this.getData();
            }
            else
            {
-           console.log('User login failed');
-         }
-      });
+            console.log('User login failed');
+          }
+      })
+  }
+
+  getData  () {
+    FB.api(
+      this.user,
+      {fields: 'picture, name'},
+      (response) => {
+        if (response && !response.error) {
+          this.pictureUrl = response.picture.data.url;
+          this.loggedIn = true;
+          console.log("from getdata", this);
+
+        }
+      }
+    )
   }
 }
 
