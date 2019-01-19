@@ -8,7 +8,8 @@ import { ContainerComponent } from './container/container.component';
 import { StoryComponent } from './story/story.component';
 import { EventComponent } from './event/event.component';
 import { ListContainerComponent } from './list-container/list-container.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
