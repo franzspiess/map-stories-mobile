@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
       FB.init({
-        appId      : '2543129815913697',
+        appId      : '314734805839026',
         cookie     : true,
         xfbml      : true,
         version    : 'v3.1'
