@@ -11,8 +11,7 @@ import { EventComponent } from './event/event.component';
 import { ListContainerComponent } from './list-container/list-container.component';
 import { HttpClientModule} from '@angular/common/http';
 import { MystoriesComponent } from './mystories/mystories.component';
-import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
+
 
 
 
@@ -33,8 +32,6 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatFormFieldModule,
-    MatButtonModule
 
   ],
   providers: [],
