@@ -36,17 +36,17 @@ export class EventComponent implements OnInit {
   {
     const s3 = new S3(
       {
-        accessKeyId: 'AKIAIGN6OJQFPUNLC4VA',
-        secretAccessKey: '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',
-        region: 'eu-west-2'
+        accessKeyId: 'AKIAJL52JLSRVP23CF2A',
+        secretAccessKey: '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',
+        region: 'eu-west-3'
       }
     );
 
     const params = {
-      Bucket: 'legacy-cw',
+      Bucket: 'map-story',
       Key: '/' + this.iosPhoto.name,
       Body: this.iosPhoto,
-      // ACL: 'public-read',
+      ACL: 'public-read',
     };
 
     s3.upload(params, function (err, data) {
