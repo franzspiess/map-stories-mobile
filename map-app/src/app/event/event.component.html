@@ -12,8 +12,9 @@
         <input type="text" class="form-control" id="startTime" required [(ngModel)]="newEvent.startTime" name="startTime" placeholder="00:00">
       </div>
 
+
       <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)">
-      <img src="{{selectedFile}}">
+
       <button type="button" (click)="onUpload()">Upload File</button>
 
       <button type="submit" class="btn btn-success">Submit</button>

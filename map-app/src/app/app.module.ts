@@ -10,6 +10,7 @@ import { StoryComponent } from './story/story.component';
 import { EventComponent } from './event/event.component';
 import { ListContainerComponent } from './list-container/list-container.component';
 import { HttpClientModule} from '@angular/common/http';
+import { MystoriesComponent } from './mystories/mystories.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule} from '@angular/common/http';
     ContainerComponent,
     StoryComponent,
     EventComponent,
-    ListContainerComponent
+    ListContainerComponent,
+    MystoriesComponent
   ],
   imports: [
     BrowserModule,

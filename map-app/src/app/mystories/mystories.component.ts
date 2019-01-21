@@ -3,24 +3,31 @@ import { DataService } from '../data.service';
 import { Story } from '../Models';
 
 @Component({
-  selector: 'app-list-container',
-  templateUrl: './list-container.component.html',
-  styleUrls: ['./list-container.component.scss']
+  selector: 'app-mystories',
+  templateUrl: './mystories.component.html',
+  styleUrls: ['./mystories.component.scss']
 })
-export class ListContainerComponent implements OnInit {
+export class MystoriesComponent implements OnInit {
 
   private stories: Story[];
+  private newStory: boolean;
 
   constructor(private apiService: DataService) { }
 
   getStory (): void{
     this.apiService.getStory()
     .subscribe((data) => {
+      console.log('Server Response',data);
       this.stories = data;
     })
   }
 
+  handleClick () {
+    this.newStory = true;
+  }
+
   ngOnInit() {
+    this.newStory = false;
     this.getStory();
   }
 

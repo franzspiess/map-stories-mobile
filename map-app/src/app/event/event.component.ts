@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../Models'
+import { Event } from '../Models'
 
 @Component({
   selector: 'app-event',
@@ -13,11 +13,12 @@ export class EventComponent implements OnInit {
   newEvent = new Event ();
 
   title = 'app';
-  selectedFile = null;
+  selectedFile = "";
 
   onFileSelected(event)
   {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile)
     
   }
 
