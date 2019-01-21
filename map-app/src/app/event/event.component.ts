@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../Models'
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-event',
@@ -8,7 +9,7 @@ import { Event } from '../Models'
 })
 export class EventComponent implements OnInit {
 
-  contructor() { }
+  constructor(private apiService: DataService) { }
 
   newEvent = new Event ();
 
@@ -18,13 +19,8 @@ export class EventComponent implements OnInit {
   onFileSelected(event)
   {
     this.selectedFile = event.target.files[0];
-<<<<<<< HEAD
     console.log('event',this.selectedFile)
 
-=======
-    console.log(this.selectedFile)
-    
->>>>>>> de9b8b3cc81ef21f9909ad22027365ce73cac6a3
   }
 
   onUpload()
@@ -37,6 +33,11 @@ export class EventComponent implements OnInit {
   ngOnInit() {
     console.log(this.newEvent);
 
+  }
+
+  postEvent (data): void {
+    console.log(data);
+    this.apiService.postEvent (data);
   }
 
   get diagnostic() { return JSON.stringify(this.newEvent); }

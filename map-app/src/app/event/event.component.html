@@ -11,12 +11,14 @@
           placeholder="Event Title">
       </div>
 
-      <div class="form-group">
-        <label for="startTime" class="form-start-time">Time for event to Start</label>
-        <input type="text" class="form-control" id="startTime" required [(ngModel)]="newEvent.startTime" name="startTime"
-          placeholder="00:00">
-      </div>
 
+      <div class="start-group">
+        <label for="startTime" class="form-start-time">Time for event to Start</label>
+        <div class="start-form-group">
+          <input type="text" class="form-control" id="startTime" required [(ngModel)]="newEvent.startTime" name="startTime"
+            placeholder="00:00">
+        </div>
+      </div>
       <div class="form-capture">
         <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
           class="img-add">
@@ -24,7 +26,7 @@
       </div>
       <button type="button" (click)="onUpload()" class="form-btn form-upload">UPLOAD IMAGE</button>
 
-      <button type="submit" class="btn btn-success" class="form-btn form-submit">SUBMIT</button>
+      <button type="submit" class="btn btn-success" class="form-btn form-submit" (click)="postEvent(newEvent)">SUBMIT</button>
 
     </form>
   </div>
