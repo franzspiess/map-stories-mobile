@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../Models'
+import { Event } from '../Models'
 
 @Component({
   selector: 'app-event',
@@ -8,16 +8,23 @@ import {Event} from '../Models'
 })
 export class EventComponent implements OnInit {
 
+  contructor() { }
+
   newEvent = new Event ();
 
   title = 'app';
-  selectedFile = null;
+  selectedFile = "";
 
   onFileSelected(event)
   {
     this.selectedFile = event.target.files[0];
+<<<<<<< HEAD
     console.log('event',this.selectedFile)
 
+=======
+    console.log(this.selectedFile)
+    
+>>>>>>> de9b8b3cc81ef21f9909ad22027365ce73cac6a3
   }
 
   onUpload()
@@ -26,7 +33,6 @@ export class EventComponent implements OnInit {
   }
 
 
-  contructor() { }
 
   ngOnInit() {
     console.log(this.newEvent);
