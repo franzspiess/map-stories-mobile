@@ -26,6 +26,10 @@ export class MystoriesComponent implements OnInit {
     this.newStory = true;
   }
 
+  clickCancel () {
+    this.newStory = false;
+  }
+
   ngOnInit() {
     this.newStory = false;
     this.getStory();
