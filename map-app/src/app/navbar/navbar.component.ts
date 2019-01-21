@@ -1,7 +1,7 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
-import { getViewData } from '@angular/core/src/render3/state';
-import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
-declare var window: any;
+import { Component, OnInit } from '@angular/core';
+// import { getViewData } from '@angular/core/src/render3/state';
+// import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
+// declare var window: any;
 declare var FB: any;
 
 @Component({
@@ -9,23 +9,16 @@ declare var FB: any;
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   private user: string;
   private token: string;
   private pictureUrl: string;
-  loggedIn = false;
-
-
-  constructor() {
-
-  }
-
+  private loggedIn: boolean = false;
 
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
       FB.init({
-        appId      : '314734805839026',
+        appId      : '2543129815913697',
         cookie     : true,
         xfbml      : true,
         version    : 'v3.1'
@@ -41,10 +34,6 @@ export class NavbarComponent implements OnInit{
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
   }
-
-  // ngDoCheck () {
-  //   this.getData();
-  // }
 
 
   submitLogin(){
@@ -71,15 +60,16 @@ export class NavbarComponent implements OnInit{
     FB.api(
       this.user,
       {fields: 'picture, name'},
-      (response) => {
-        if (response && !response.error) {
-          this.pictureUrl = response.picture.data.url;
-          this.loggedIn = true;
-          console.log("from getdata", this);
-
-        }
-      }
+      (response) => this.logInWithData(response)
     )
+  }
+
+  logInWithData(response: any) {
+    if (response && !response.error) {
+      this.pictureUrl = response.picture.data.url;
+      this.loggedIn = true;
+    }
+
   }
 }
 

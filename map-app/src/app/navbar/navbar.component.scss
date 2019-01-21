@@ -1,12 +1,15 @@
+.the-navbar {
+  width: 100vw;
+  height:14vh;
+  display:flex;
+}
+
 .titleBoard {
   display: flex;
   align-items: center;
-  height: 70px;
   background-color: #673AB7;
-  position: relative;
-  z-index: 1100;
   width: 100%;
-  padding-left: 20px;
+  justify-content: space-around;
   }
 
   .title {
@@ -18,9 +21,6 @@
   text-decoration: none;
   }
 
-  a {
-    width: 80%;
-  }
   .userPic {
     border-radius: 100%;
   }

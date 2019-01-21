@@ -16,7 +16,8 @@ export class EventComponent implements OnInit {
   onFileSelected(event)
   {
     this.selectedFile = event.target.files[0];
-    
+    console.log('event',this.selectedFile)
+
   }
 
   onUpload()
