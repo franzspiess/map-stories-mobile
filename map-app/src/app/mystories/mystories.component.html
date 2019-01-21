@@ -1,5 +1,6 @@
+  <div class="container">
   
-    <ng-container *ngIf="newStory">
+  <ng-container *ngIf="newStory">
       <div class="newStory">
         <p>CREATE NEW STORY</p>
         <p>Add a title and tagline for your new story</p>
@@ -11,7 +12,7 @@
     </ng-container>
   
   <div class="addStory">
-    <button class="button" (click)="handleClick()">
+    <button class="addButton" (click)="handleClick()">
   <img src="../../assets/plus.svg">
   </button>
   </div>
@@ -19,6 +20,9 @@
   
   <div>
     <ul *ngFor="let story of stories">
-    <app-story [story]="story"></app-story>
+    <app-story class="myStory" [story]="story"></app-story>
     </ul>
   </div>
+
+
+</div>

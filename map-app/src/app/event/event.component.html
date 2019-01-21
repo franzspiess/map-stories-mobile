@@ -17,12 +17,17 @@
           placeholder="00:00">
       </div>
 
+
+
+
       <div class="form-capture">
-        <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
+        <input type="file" #iosPhoto capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
           class="img-add">
-        <img src="{{selectedFile}}">
+        <img class="iosPhoto" [src]="imageUrl">
       </div>
-      <button type="button" (click)="onUpload()" class="form-btn form-upload">UPLOAD IMAGE</button>
+
+
+      <button type="button" id="upload_image" (click)="onUpload()" class="form-btn form-upload">UPLOAD IMAGE</button>
 
       <button type="submit" class="btn btn-success" class="form-btn form-submit">SUBMIT</button>
 
