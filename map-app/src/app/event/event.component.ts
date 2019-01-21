@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../Models'
+import { DataService } from '../data.service';
 
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
@@ -12,7 +13,7 @@ import * as S3 from 'aws-sdk/clients/s3';
 })
 export class EventComponent implements OnInit {
 
-  contructor() { }
+  constructor(private apiService: DataService) { }
 
   newEvent = new Event ();
 
@@ -64,6 +65,11 @@ export class EventComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.newEvent);
+  }
+
+  postEvent (data): void {
+    console.log(data);
+    this.apiService.postEvent (data);
   }
 
   get diagnostic() { return JSON.stringify(this.newEvent); }

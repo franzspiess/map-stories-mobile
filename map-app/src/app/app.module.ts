@@ -11,6 +11,10 @@ import { EventComponent } from './event/event.component';
 import { ListContainerComponent } from './list-container/list-container.component';
 import { HttpClientModule} from '@angular/common/http';
 import { MystoriesComponent } from './mystories/mystories.component';
+import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 
 @NgModule({
@@ -22,12 +26,15 @@ import { MystoriesComponent } from './mystories/mystories.component';
     EventComponent,
     ListContainerComponent,
     MystoriesComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatButtonModule
 
   ],
   providers: [],
