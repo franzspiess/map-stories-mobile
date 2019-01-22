@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../Models'
 import { DataService } from '../data.service';
+import { HttpClientModule, HttpClient} from '@angular/common/http';
 
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
@@ -13,7 +14,21 @@ import * as S3 from 'aws-sdk/clients/s3';
 })
 export class EventComponent implements OnInit {
 
-  constructor(private apiService: DataService) { }
+
+  name = 'Angular';
+  lat:any;
+  lng:any;
+
+  constructor(private apiService: DataService) { 
+    if (navigator)
+    {
+    navigator.geolocation.getCurrentPosition( pos => {
+        this.lng = +pos.coords.longitude;
+        this.lat = +pos.coords.latitude;
+      });
+    }
+  }
+  
 
   newEvent = new Event ();
 
@@ -36,8 +51,8 @@ export class EventComponent implements OnInit {
   {
     const s3 = new S3(
       {
-        accessKeyId: 'AKIAJL52JLSRVP23CF2A',
-        secretAccessKey: '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',
+        accessKeyId: '',
+        secretAccessKey: '',
         region: 'eu-west-3'
       }
     );

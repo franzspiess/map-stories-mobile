@@ -14,12 +14,7 @@ export class DataService {
     'Authorization': 'Bearer admin'
   });
 
-
-
-
-
-
-  private url = 'http://localhost:4000/'
+  private url = 'http://192.168.1.182:4000/'
 
   constructor(private http: HttpClient) { }
 
@@ -34,9 +29,15 @@ export class DataService {
     this.http.post(myUrl, data, {
       headers: this.header
     }).subscribe((res:any) => console.log(res))
-
   }
 
-
+  postStory (data:Story) {
+    console.log(data);
+    let myUrl= `${this.url}stories`;
+    console.log(myUrl);
+    this.http.post(myUrl, data, {
+      headers: this.header
+    }).subscribe((res:any) => console.log(res))
+  }
 
 }

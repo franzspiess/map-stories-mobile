@@ -6,11 +6,15 @@
       <img class="userPic" src="{{pictureUrl}}">
     </div>
     <ng-template #loggedOut>
-      <button type="button" class="btn" (click)="submitLogin()">Login with facebook</button>
+      <button type="button" class="btnFb" (click)="submitLogin()">Login with facebook</button>
     </ng-template>
 
     <div>
-        <button type="button" class="btn" routerLink="/mystories">My Stories</button>
+        <button type="button" class="btnMenu" routerLink="/mystories">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        </button>
     </div>
 
   </div>

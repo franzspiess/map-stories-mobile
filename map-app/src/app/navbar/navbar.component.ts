@@ -69,7 +69,9 @@ export class NavbarComponent implements OnInit {
       this.pictureUrl = response.picture.data.url;
       this.loggedIn = true;
     }
-
   }
+
+
+
 }
 

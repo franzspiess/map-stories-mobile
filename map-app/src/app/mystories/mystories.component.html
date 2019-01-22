@@ -1,28 +1,49 @@
-  <div class="container">
-  
-  <ng-container *ngIf="newStory">
-      <div class="newStory">
-        <p>CREATE NEW STORY</p>
-        <p>Add a title and tagline for your new story</p>
-        <input type="text">
-        <input type="text">
-        <button (click)="clickCancel()">Cancel</button>
-        <button>Create</button>
-      </div>
-    </ng-container>
-  
-  <div class="addStory">
+<div class="addStory">
     <button class="addButton" (click)="handleClick()">
   <img src="../../assets/plus.svg">
   </button>
   </div>
-
   
-  <div>
-    <ul *ngFor="let story of stories">
-    <app-story class="myStory" [story]="story"></app-story>
-    </ul>
-  </div>
+  <div class="container">
+  
+  <ng-container *ngIf="newStory">
+      <div class="newStory">
+        <p class="story-headline">CREATE NEW STORY</p>
+        <p class="story-subheadline">Add a title and tagline for your new story</p>
+  
+          <div class="event-info">
+            <form #eventForm="ngForm" class="event-form">
+              <div class="form-group">
+      
+                <input type="text" class="form-control" id="title" required [(ngModel)]="newStoryDb.title" name="title"
+                  placeholder="New Story">
+              </div>
+              </form>
+          </div>
+    
+            <div class="event-info">
+              <form #eventForm="ngForm" class="event-form">
+               <div class="form-group">
+                <!-- <label for="title">Title:</label> -->
+                <input type="text" class="form-control" id="title" required [(ngModel)]="newStoryDb.tagLine" name="title"
+                  placeholder="Tagline">
+          </div>
+            </form>
+            </div>
+           
+      </div>
+
+        <button class="addEventBtn" (click)="postStory(newStoryDb)">CREATE</button>
+        <button class="addEventBtn" (click)="clickCancel()">CANCEL</button>
+
+    </ng-container>
+  
+    <div class="storiesList">
+        <ul *ngFor="let story of stories">
+        <app-story class="myStory" [story]="story"></app-story>
+        </ul>
+      </div>
+
 
 
 </div>

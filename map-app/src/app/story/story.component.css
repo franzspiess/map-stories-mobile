@@ -1,6 +1,21 @@
 .story {
   display:flex;
-  justify-content: space-around;
-  align-items:center;
-  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  background-color: white;
+  border-radius: 15px;
+}
+
+p {
+margin-left: 10px;
+}
+
+.btnEvent {
+  margin-right: 20px;
+  color:  #673AB7;
+  background-color: white;
+  border: none;
+  height: 20px;
+  font-weight: 550;
 }
