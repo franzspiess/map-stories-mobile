@@ -20,6 +20,15 @@
             placeholder="00:00">
         </div>
       </div>
+
+      <div class="start-group">
+          <div class="start-form-group">
+            <input type="text" class="form-control" id="mapLocation" required [(ngModel)]="newEvent.mapLocation" name="mapLocation"
+              placeholder="Location">
+          </div>
+        </div>
+
+
       <div class="form-capture">
         <label class="label"> TAKE PHOTO!
         <input type="file" #iosPhoto capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"

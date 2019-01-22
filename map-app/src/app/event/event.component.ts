@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../Models'
+import { Event, Location } from '../Models'
 import { DataService } from '../data.service';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 
@@ -25,12 +25,15 @@ export class EventComponent implements OnInit {
     navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
+        this.newEvent.location = new Location ();
+        this.newEvent.location.lat = this.lat;
+        this.newEvent.location.lng = this.lng;
       });
     }
   }
   
-
   newEvent = new Event ();
+
 
   public imagePath;
   iosPhoto: File;
@@ -45,7 +48,6 @@ export class EventComponent implements OnInit {
     reader.readAsDataURL(this.iosPhoto);
     reader.onload = (_event) => {this.imageUrl = reader.result;}
   }
-
 
   onUpload()
   {
