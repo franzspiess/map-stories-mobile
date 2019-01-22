@@ -33,8 +33,8 @@
         <label class="label"> TAKE PHOTO!
         <input type="file" #iosPhoto capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
           class="img-add">
-        </label> 
-        <img class="iosPhoto" [src]="imageUrl">
+        </label>
+        <img *ngIf="imageUrl" class="iosPhoto" [src]="imageUrl">
       </div>
 
 

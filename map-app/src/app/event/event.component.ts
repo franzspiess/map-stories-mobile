@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Event, Location } from '../Models'
+import { Component, OnInit, Input } from '@angular/core';
+import { Event, Location, Story } from '../Models'
 import { DataService } from '../data.service';
 import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
 
@@ -11,6 +11,8 @@ import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+
+  @Input() story: Story;
 
 
   name = 'Angular';
@@ -61,7 +63,7 @@ export class EventComponent implements OnInit {
 
 
   ngOnInit() {
-
+    console.log(this.story);
     this.getAWSUrl();
 
 

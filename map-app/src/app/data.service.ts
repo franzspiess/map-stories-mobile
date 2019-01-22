@@ -19,7 +19,7 @@ export class DataService {
 
 
 
-  private url = 'http://localhost:4000/';
+  private url = 'http://192.168.1.206:4000/';
 
 
   constructor(private http: HttpClient) { }
