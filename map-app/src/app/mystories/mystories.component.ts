@@ -14,6 +14,8 @@ export class MystoriesComponent implements OnInit {
 
   constructor(private apiService: DataService) { }
 
+  newStoryDb = new Story ();
+
   getStory (): void{
     this.apiService.getStory()
     .subscribe((data) => {
@@ -34,5 +36,13 @@ export class MystoriesComponent implements OnInit {
     this.newStory = false;
     this.getStory();
   }
+
+  postStory (data): void {
+    console.log(data);
+    this.apiService.postStory (data);
+  }
+
+  get diagnostic() { return JSON.stringify(this.newStoryDb); }
+
 
 }

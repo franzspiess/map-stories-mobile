@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../Models'
 import { DataService } from '../data.service';
-import {HttpEvent} from '@angular/common/http'
+import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
 
 
 
@@ -12,7 +12,21 @@ import {HttpEvent} from '@angular/common/http'
 })
 export class EventComponent implements OnInit {
 
-  constructor(private apiService: DataService) { }
+
+  name = 'Angular';
+  lat:any;
+  lng:any;
+
+  constructor(private apiService: DataService) {
+    if (navigator)
+    {
+    navigator.geolocation.getCurrentPosition( pos => {
+        this.lng = +pos.coords.longitude;
+        this.lat = +pos.coords.latitude;
+      });
+    }
+  }
+
 
   newEvent = new Event ();
 

@@ -39,25 +39,6 @@
   height: 100%;
   width: 100%;
 }
-// .mat-form-field-wrapper {
-//   width:100%;
-//   height:100%;
-//   display:flex;
-//   flex-direction: column;
-// }
-// .mat-form-field-flex {
-// width:100%;
-// height:100%;
-// display:flex;
-// flex-direction: column;
-// }
-
-// .mat-form-field-infix {
-//   width:100%;
-//   height:100%;
-//   display:flex;
-//   flex-direction: column;
-// }
 
 input {
   border-style: none;
@@ -92,8 +73,6 @@ button {
   align-items:center;
 }
 
-
-
 .form-control {
   font-size: 100%;
   width: 100%;
@@ -113,15 +92,15 @@ button {
 
   height: 27%;
   width:95%;
-
-
 }
 .img-add {
 
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 20%;
   border-style: none;
+  background-color: white;
+  margin-bottom: 10px;
 }
 
 .form-btn {
@@ -130,19 +109,35 @@ button {
   font-weight: bold;
 }
 
-
-
 .form-upload {
-  border-bottom: 0.5px solid grey;
+  margin-left: 5%;
+  // border-bottom: 0.5px solid grey;
 }
-.form-submit {
 
-
-  align-self: flex-end;
+.form-submit { 
   margin-right: 5%;
 }
 
 .iosPhoto {
-  width: 100px;
-  height: 100px;
+  width: 50%;
+  height: 100%;
+}
+
+.btnCont {
+  display: flex;
+  align-content: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.label {
+  background-color: white;
+  color: grey;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 80%;
 }

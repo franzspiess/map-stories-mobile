@@ -72,6 +72,13 @@ export class DataService {
 
   }
 
-
+  postStory (data:Story) {
+    console.log(data);
+    let myUrl= `${this.url}stories`;
+    console.log(myUrl);
+    this.http.post(myUrl, data, {
+      headers: this.header
+    }).subscribe((res:any) => console.log(res))
+  }
 
 }
