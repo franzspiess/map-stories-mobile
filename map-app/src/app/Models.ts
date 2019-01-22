@@ -15,17 +15,16 @@ export class Story {
   events:Event[];
 }
 
-export class Location {
-  lat: number;
+export class MapLoc {
   lng: number;
+  lat: number;
 }
 
 export class Attachment {
-  type: string;
-  url: string;
-  urlImg: string;
-  title: string;
-  text: string;
+  urlImg?: string;
+  type?: string;
+  title?: string;
+  text?: string;
 
 }
 
@@ -35,7 +34,7 @@ export class Event {
   public startTime?: string,
   public dateAndTime?: number,
   public mapLocation?: string,
-  public location?: Location,
-  public attachments?: Attachment
+  public location?: MapLoc,
+  public attachments?: Attachment[]
   ) {}
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event, Location, Story } from '../Models'
+import { Event, MapLoc, Story, Attachment } from '../Models'
 import { DataService } from '../data.service';
 import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 
@@ -12,28 +14,37 @@ import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
 })
 export class EventComponent implements OnInit {
 
-  @Input() story: Story;
+
+
+  private story: Story;
+  private attachment = new Attachment();
+  private fileName = String(Math.floor(Math.random() * 10000));
 
 
   name = 'Angular';
   lat:any;
   lng:any;
 
-  constructor(private apiService: DataService) {
+  constructor(
+    private apiService: DataService,
+    private route: ActivatedRoute,
+    private location: Location
+    ) {
     if (navigator)
     {
     navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
-        this.newEvent.location = new Location ();
-        this.newEvent.location.lat = this.lat;
+        this.newEvent.location = new MapLoc ();
         this.newEvent.location.lng = this.lng;
+        this.newEvent.location.lat = this.lat;
       });
     }
   }
 
 
   newEvent = new Event ();
+
 
   private AWSData: any;
 
@@ -53,7 +64,7 @@ export class EventComponent implements OnInit {
   }
 
   onUpload () {
-    this.apiService.uploadfileAWSS3(this.AWSData, 'image/jpeg', this.iosPhoto)
+    this.apiService.uploadfileAWSS3(this.AWSData, 'image/jpeg', this.iosPhoto, this.fileName)
       .subscribe((event:HttpEvent<any>) => {console.log(event);
       })
 
@@ -63,8 +74,11 @@ export class EventComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.story);
+
     this.getAWSUrl();
+    this.getOneStory();
+    console.log(this.story);
+    console.log(this.newEvent)
 
 
 
@@ -74,6 +88,10 @@ export class EventComponent implements OnInit {
     this.apiService.getAWSUrl()
     .subscribe(data => {
       this.AWSData = data;
+      this.attachment.urlImg = data.url + `/uploads/${this.fileName}.jpeg`;
+      this.attachment.type = 'image';
+      this.newEvent.attachments = [];
+      this.newEvent.attachments.push(this.attachment);
     })
 
   }
@@ -83,9 +101,21 @@ export class EventComponent implements OnInit {
     this.apiService.postEvent (data);
   }
 
+  getOneStory (): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.apiService.getOneStory(id)
+    .subscribe((data) => {
+      console.log('Server Response',data);
+      this.story = data;
+    })
+
+
+  }
+
   get diagnostic() { return JSON.stringify(this.newEvent); }
 
 }
+
 
 
   // onUpload()

@@ -6,7 +6,7 @@ import { MystoriesComponent} from './mystories/mystories.component';
 
 const routes: Routes = [
   {path: 'list', component: ListContainerComponent},
-  {path: 'event', component: EventComponent },
+  {path: 'event/:id', component: EventComponent },
   {path: 'mystories', component: MystoriesComponent }
 ];
 
