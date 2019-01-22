@@ -35,7 +35,7 @@ export class EventComponent implements OnInit {
   public imagePath;
   iosPhoto: File;
   imageUrl: any;
-  
+
 
   onFileSelected(event)
   {
@@ -46,7 +46,7 @@ export class EventComponent implements OnInit {
     reader.onload = (_event) => {this.imageUrl = reader.result;}
   }
 
-  
+
   onUpload()
   {
     const s3 = new S3(
@@ -56,26 +56,26 @@ export class EventComponent implements OnInit {
         region: 'eu-west-3'
       }
     );
- 
+
     const params = {
       Bucket: 'map-story',
       Key: '/' + this.iosPhoto.name,
       Body: this.iosPhoto,
       ACL: 'public-read',
     };
- 
+
     s3.upload(params, function (err, data) {
       if (err) {
         console.log('There was an error uploading your file: ', err);
         return false;
       }
- 
+
       console.log('Successfully uploaded file.', data);
       return true;
     });
 
     console.log(this.iosPhoto);
-  
+
   }
 
   ngOnInit() {
