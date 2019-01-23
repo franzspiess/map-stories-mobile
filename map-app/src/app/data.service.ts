@@ -65,9 +65,9 @@ export class DataService {
 
   }
 
-  postEvent (data:Event) {
+  postEvent (data:Event, id:string) {
     console.log(data);
-    let myUrl= `${this.url}stories/5c430182c6cb7647019b7d98/event`;
+    let myUrl= `${this.url}stories/${id}/event`;
     console.log(myUrl);
     this.http.post(myUrl, data, {
       headers: this.header

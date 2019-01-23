@@ -1,4 +1,5 @@
 export class Editor {
+  _id?: string;
   name: string;
   email: string;
   token: string;
@@ -12,7 +13,7 @@ export class Story {
   tagLine: string;
   duration: string;
   published: boolean;
-  events:Event[];
+  events: Event[];
 }
 
 export class MapLoc {
@@ -21,7 +22,7 @@ export class MapLoc {
 }
 
 export class Attachment {
-  urlImg?: string;
+  imageUrl?: string;
   type?: string;
   title?: string;
   text?: string;
@@ -30,11 +31,12 @@ export class Attachment {
 
 export class Event {
   constructor(
-  public title?: string,
-  public startTime?: string,
-  public dateAndTime?: number,
-  public mapLocation?: string,
-  public location?: MapLoc,
-  public attachments?: Attachment[]
-  ) {}
+    public user?: string,
+    public title?: string,
+    public startTime?: string,
+    public dateAndTime?: number,
+    public mapLocation?: string,
+    public coordinates?: MapLoc[],
+    public attachments?: Attachment[]
+  ) { }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event, MapLoc, Story, Attachment } from '../Models'
+import { Event, MapLoc, Story, Attachment, Editor } from '../Models'
 import { DataService } from '../data.service';
 import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -19,6 +19,8 @@ export class EventComponent implements OnInit {
   private story: Story;
   private attachment = new Attachment();
   private fileName = String(Math.floor(Math.random() * 10000));
+  private editor = new Editor;
+  private length: number;
 
 
   name = 'Angular';
@@ -35,9 +37,11 @@ export class EventComponent implements OnInit {
     navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
-        this.newEvent.location = new MapLoc ();
-        this.newEvent.location.lng = this.lng;
-        this.newEvent.location.lat = this.lat;
+        this.newEvent.coordinates = [];
+        const myLoc = new MapLoc ();
+        myLoc.lng = this.lng;
+        myLoc.lat = this.lat;
+        this.newEvent.coordinates.push(myLoc);
       });
     }
   }
@@ -88,7 +92,7 @@ export class EventComponent implements OnInit {
     this.apiService.getAWSUrl()
     .subscribe(data => {
       this.AWSData = data;
-      this.attachment.urlImg = data.url + `/uploads/${this.fileName}.jpeg`;
+      this.attachment.imageUrl = data.url + `/uploads/${this.fileName}.jpeg`;
       this.attachment.type = 'image';
       this.newEvent.attachments = [];
       this.newEvent.attachments.push(this.attachment);
@@ -96,9 +100,10 @@ export class EventComponent implements OnInit {
 
   }
 
-  postEvent (data): void {
+  postEvent (data, id): void {
     console.log(data);
-    this.apiService.postEvent (data);
+    data.dateAndTime = Date.now();
+    this.apiService.postEvent (data, id);
   }
 
   getOneStory (): void {
@@ -107,6 +112,11 @@ export class EventComponent implements OnInit {
     .subscribe((data) => {
       console.log('Server Response',data);
       this.story = data;
+      this.editor = this.story.editor;
+      this.length = this.story.events.length;
+      this.newEvent.startTime = `00:${this.length}0`;
+      this.newEvent.user = this.story.editor._id;
+
     })
 
 
