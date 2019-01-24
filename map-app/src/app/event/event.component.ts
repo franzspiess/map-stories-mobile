@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Event, MapLoc, Story, Attachment, Editor } from '../Models'
 import { DataService } from '../data.service';
 import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 
@@ -22,6 +22,7 @@ export class EventComponent implements OnInit {
   private editor = new Editor;
   private length: number;
 
+  newEvent = new Event ();
 
   name = 'Angular';
   lat:any;
@@ -30,8 +31,10 @@ export class EventComponent implements OnInit {
   constructor(
     private apiService: DataService,
     private route: ActivatedRoute,
-    private location: Location
-    ) {
+    private location: Location,
+    private router: Router
+    )
+    {
     if (navigator)
     {
     navigator.geolocation.getCurrentPosition( pos => {
@@ -47,7 +50,6 @@ export class EventComponent implements OnInit {
   }
 
 
-  newEvent = new Event ();
 
 
   private AWSData: any;
@@ -104,6 +106,7 @@ export class EventComponent implements OnInit {
     console.log(data);
     data.dateAndTime = Date.now();
     this.apiService.postEvent (data, id);
+    this.router.navigate(['mystories']);
   }
 
   getOneStory (): void {
@@ -122,7 +125,7 @@ export class EventComponent implements OnInit {
 
   }
 
-  get diagnostic() { return JSON.stringify(this.newEvent); }
+   get diagnostic() { return JSON.stringify(this.newEvent.coordinates); }
 
 }
 
