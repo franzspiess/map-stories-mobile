@@ -1,0 +1,52 @@
+<div class="event-container">
+  <div class="event-header">
+    <p class="event-headline">ADD EVENT</p>
+
+  </div>
+
+
+  <div class="event-info">
+    <form #eventForm="ngForm" class="event-form">
+      <div class="form-group">
+        <input type="text" class="form-control" id="title" required [(ngModel)]="newEvent.title" name="title"
+          placeholder="Event Title">
+      </div>
+
+      <div class="start-group">
+        <label for="startTime" class="form-start-time">Time for event to Start</label>
+        <div class="start-form-group">
+          <input type="text" class="form-control" id="startTime" required [(ngModel)]="newEvent.startTime" name="startTime"
+            placeholder="00:00">
+        </div>
+      </div>
+
+      <div class="start-group">
+        <div class="start-form-group">
+          <input type="text" class="form-control" id="mapLocation" required [(ngModel)]="newEvent.mapLocation" name="mapLocation"
+            placeholder="Location">
+        </div>
+      </div>
+
+
+      <div class="form-capture">
+        <label class="label"> TAKE PHOTO!
+          <input type="file" #iosPhoto capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
+            class="img-add">
+        </label>
+        <img *ngIf="imageUrl" class="iosPhoto" [src]="imageUrl">
+      </div>
+
+      <div class="btnCont">
+
+        <button type="button" id="upload_image" routerLink="/list" class="form-btn form-upload">CANCEL</button>
+
+        <button type="button" id="upload_image" (click)="onUpload()" class="form-btn form-upload">IMAGE O.K.!</button>
+
+        <button type="submit" class="btn btn-success" class="form-btn form-submit" (click)="postEvent(newEvent, this.story._id)">SUBMIT</button>
+
+      </div>
+
+    </form>
+  </div>
+
+</div>

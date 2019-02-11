@@ -1,0 +1,6 @@
+@import '~@angular/material/theming';
+@import '~@angular/material/theming';
+
+$map-app-primary: mat-palette(#673AB7);
+$map-app-accent:  mat-palette(#673AB7);
+@include angular-material-theme($map-app-theme);

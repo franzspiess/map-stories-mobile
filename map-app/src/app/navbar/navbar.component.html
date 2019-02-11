@@ -1,0 +1,21 @@
+<div class="the-navbar">
+  <div class='titleBoard'>
+    <a routerLink="/list" class='title'>Map Stories</a>
+
+    <div *ngIf="loggedIn; else loggedOut">
+      <img class="userPic" src="{{pictureUrl}}">
+    </div>
+    <ng-template #loggedOut>
+      <button type="button" class="btnFb" (click)="submitLogin()">Login with facebook</button>
+    </ng-template>
+
+    <div>
+        <button type="button" class="btnMenu" routerLink="/mystories">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        </button>
+    </div>
+
+  </div>
+</div>
