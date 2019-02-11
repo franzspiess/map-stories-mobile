@@ -13,7 +13,7 @@ export class StoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.story);
+
   }
 
 }

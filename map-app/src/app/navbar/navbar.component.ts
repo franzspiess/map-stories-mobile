@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { getViewData } from '@angular/core/src/render3/state';
-// import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
-// declare var window: any;
 declare var FB: any;
 
 @Component({
@@ -37,14 +34,10 @@ export class NavbarComponent implements OnInit {
 
 
   submitLogin(){
-    console.log("submit login to facebook");
     FB.login((response)=>
         {
-          console.log('submitLogin',response);
           if (response.authResponse)
           {
-            // console.log('success')
-            console.log(this.user);
             this.user = response.authResponse.userID;
             this.token = response.authResponse.accessToken;
             this.getData();
@@ -70,8 +63,5 @@ export class NavbarComponent implements OnInit {
       this.loggedIn = true;
     }
   }
-
-
-
 }
 

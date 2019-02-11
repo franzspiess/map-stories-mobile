@@ -19,7 +19,6 @@ export class MystoriesComponent implements OnInit {
   getStory (): void{
     this.apiService.getStory()
     .subscribe((data) => {
-      console.log('Server Response',data);
       this.stories = data;
     })
   }
@@ -38,7 +37,6 @@ export class MystoriesComponent implements OnInit {
   }
 
   postStory (data): void {
-    console.log(data);
     this.apiService.postStory (data);
   }
 

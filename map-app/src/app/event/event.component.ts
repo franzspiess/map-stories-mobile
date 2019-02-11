@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Event, MapLoc, Story, Attachment, Editor } from '../Models'
 import { DataService } from '../data.service';
-import { HttpClientModule, HttpClient, HttpEvent} from '@angular/common/http';
+import { HttpEvent} from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-
-
 
 @Component({
   selector: 'app-event',
@@ -13,8 +11,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
-
-
 
   private story: Story;
   private attachment = new Attachment();
@@ -49,9 +45,6 @@ export class EventComponent implements OnInit {
     }
   }
 
-
-
-
   private AWSData: any;
 
   public imagePath;
@@ -76,18 +69,9 @@ export class EventComponent implements OnInit {
 
   }
 
-
-
-
   ngOnInit() {
-
     this.getAWSUrl();
     this.getOneStory();
-    console.log(this.story);
-    console.log(this.newEvent)
-
-
-
   }
 
   getAWSUrl (): void {
@@ -99,11 +83,9 @@ export class EventComponent implements OnInit {
       this.newEvent.attachments = [];
       this.newEvent.attachments.push(this.attachment);
     })
-
   }
 
   postEvent (data, id): void {
-    console.log(data);
     data.dateAndTime = Date.now();
     this.apiService.postEvent (data, id);
     this.router.navigate(['mystories']);
@@ -113,7 +95,6 @@ export class EventComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.apiService.getOneStory(id)
     .subscribe((data) => {
-      console.log('Server Response',data);
       this.story = data;
       this.editor = this.story.editor;
       this.length = this.story.events.length;
@@ -121,59 +102,7 @@ export class EventComponent implements OnInit {
       this.newEvent.user = this.story.editor._id;
 
     })
-
-
   }
-
-   get diagnostic() { return JSON.stringify(this.newEvent.coordinates); }
-
 }
 
 
-
-  // onUpload()
-  // {
-  //   const s3 = new S3(
-  //     {
-  //       accessKeyId: 'AKIAJL52JLSRVP23CF2A',
-  //       secretAccessKey: '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',
-  //       region: 'eu-west-3'
-  //     }
-  //   );
-
-  //   const params = {
-  //     Bucket: 'map-story',
-  //     Key: '/' + this.iosPhoto.name,
-  //     Body: this.iosPhoto,
-  //     ACL: 'public-read',
-  //   };
-
-  //   s3.upload(params, function (err, data) {
-  //     if (err) {
-  //       console.log('There was an error uploading your file: ', err);
-  //       return false;
-  //     }
-
-  //     console.log('Successfully uploaded file.', data);
-  //     return true;
-  //   });
-
-  //   console.log(this.iosPhoto);
-
-  // }
-
-  // {
-  //   "Version": "2012–10–17",
-  //   "Id": "<policy-id>",
-  //   "Statement": [
-  //   {
-  //   "Sid": "<sid>",
-  //   "Effect": "Allow",
-  //   "Principal": {
-  //   "AWS": "arn:aws:iam::<awsaccount>:user/<awsusername>"
-  //   },
-  //   "Action": "s3:*",
-  //   "Resource": "arn:aws:s3:::<s3-bucket-name>"
-  //   }
-  //   ]
-  //  }

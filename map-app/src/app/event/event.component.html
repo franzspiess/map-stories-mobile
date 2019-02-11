@@ -1,14 +1,13 @@
 <div class="event-container">
   <div class="event-header">
     <p class="event-headline">ADD EVENT</p>
-    {{diagnostic}}
+
   </div>
 
 
   <div class="event-info">
     <form #eventForm="ngForm" class="event-form">
       <div class="form-group">
-        <!-- <label for="title">Title:</label> -->
         <input type="text" class="form-control" id="title" required [(ngModel)]="newEvent.title" name="title"
           placeholder="Event Title">
       </div>
@@ -22,34 +21,32 @@
       </div>
 
       <div class="start-group">
-          <div class="start-form-group">
-            <input type="text" class="form-control" id="mapLocation" required [(ngModel)]="newEvent.mapLocation" name="mapLocation"
-              placeholder="Location">
-          </div>
+        <div class="start-form-group">
+          <input type="text" class="form-control" id="mapLocation" required [(ngModel)]="newEvent.mapLocation" name="mapLocation"
+            placeholder="Location">
         </div>
+      </div>
 
 
       <div class="form-capture">
         <label class="label"> TAKE PHOTO!
-        <input type="file" #iosPhoto capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
-          class="img-add">
+          <input type="file" #iosPhoto capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)"
+            class="img-add">
         </label>
         <img *ngIf="imageUrl" class="iosPhoto" [src]="imageUrl">
       </div>
 
-
       <div class="btnCont">
 
-      <button type="button" id="upload_image" routerLink="/list" class="form-btn form-upload">CANCEL</button>
+        <button type="button" id="upload_image" routerLink="/list" class="form-btn form-upload">CANCEL</button>
 
-      <button type="button" id="upload_image" (click)="onUpload()" class="form-btn form-upload">IMAGE O.K.!</button>
+        <button type="button" id="upload_image" (click)="onUpload()" class="form-btn form-upload">IMAGE O.K.!</button>
 
-      <button type="submit" class="btn btn-success" class="form-btn form-submit" (click)="postEvent(newEvent, this.story._id)">SUBMIT</button>
+        <button type="submit" class="btn btn-success" class="form-btn form-submit" (click)="postEvent(newEvent, this.story._id)">SUBMIT</button>
 
-    </div>
+      </div>
 
     </form>
   </div>
 
 </div>
-
