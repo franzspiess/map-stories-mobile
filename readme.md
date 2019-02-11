@@ -6,15 +6,16 @@ The mobile app lets you add event's to your stories and uses your phone's camera
 
 #### Tech Stack:
 
-Angular & Amazon S3
+* [Angular](https://angular.io/)
+* [Amazon S3] (https://aws.amazon.com/s3)
 
 #### Installation
 
-Fork and clone this repo, as well as the map-stories-frontend and map-stories-backend repos.
+Fork and clone this repo, as well as the `map-stories-frontend` and `map-stories-backend repos`.
 
-Run "npm i" on all repos, start the server ("node index") and the front-end ("npm start").
+Run `npm i` on all repos, start the server (`node index`) and the front-end (`npm start`).
 
-Run "ng serve --host 0.0.0.0" on this repo to view the app on your phone. Find your IP-address ("ip add show" in terminal) and enter it in your phone's browser, along with the port ":4100". 
+Run `ng serve --host 0.0.0.0` on this repo to view the app on your phone. Find your IP-address (`ip add show` in terminal) and enter it in your phone's browser, along with the port `:4100`. 
 
 ### Features
 
