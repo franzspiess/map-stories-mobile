@@ -7,7 +7,7 @@ The mobile app lets you add event's to your stories and uses your phone's camera
 #### Tech Stack:
 
 * [Angular](https://angular.io/)
-* [Amazon S3] (https://aws.amazon.com/s3)
+* [Amazon_S3] (https://aws.amazon.com/s3)
 
 #### Installation
 
