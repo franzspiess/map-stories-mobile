@@ -44,7 +44,7 @@ Fork and clone this repo, as well as the map-stories-frontend and map-stories-ba
 
 Run `npmi` on all repos, start the server (`node index`) and the front-end  (`npm start`).
 
-Run `ng serve --host 0.0.0.0` on this repo to view the app on your phone. Find your IP-address ("ip add show" in terminal) and enter it in your phone's browser, along with the port `:4100`. 
+Run `ng serve --host 0.0.0.0` on this repo to view the app on your phone. Find your IP-address (`ip add show` in terminal) and enter it in your phone's browser, along with the port `:4100`. 
 
 #### Contributors
 
