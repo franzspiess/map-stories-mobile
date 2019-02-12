@@ -4,18 +4,6 @@ Map Stories is a location based storytelling app. Editors can create map based s
 
 The mobile app lets you add event's to your stories and uses your phone's camera and  GPS chip to add photo and location. You can use the regular Website (map-stories-frontend) to see the new event on the mapbox map.
 
-#### Tech Stack:
-
-Angular & Amazon S3
-
-#### Installation
-
-Fork and clone this repo, as well as the map-stories-frontend and map-stories-backend repos.
-
-Run "npm i" on all repos, start the server ("node index") and the front-end ("npm start").
-
-Run "ng serve --host 0.0.0.0" on this repo to view the app on your phone. Find your IP-address ("ip add show" in terminal) and enter it in your phone's browser, along with the port ":4100". 
-
 ### Features
 
 #### Story View
@@ -45,6 +33,36 @@ Add your event here; use your phone's camera and GPS chip to add a photo and you
 
 
 Follow your journey on the map in the desktop view.
+
+#### Tech Stack
+
+Angular & Amazon S3
+
+#### Installation
+
+Fork and clone this repo, as well as the map-stories-frontend and map-stories-backend repos.
+
+Run `npmi` on all repos, start the server (`node index`) and the front-end  (`npm start`).
+
+Run `ng serve --host 0.0.0.0` on this repo to view the app on your phone. Find your IP-address ("ip add show" in terminal) and enter it in your phone's browser, along with the port `:4100`. 
+
+#### Contributors
+
+[Tomasz Gasienica-Szostak](https://github.com/casprovy) & [Franz Spiess](https://github.com/franzspiess)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
